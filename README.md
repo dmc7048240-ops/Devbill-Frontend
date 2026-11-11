@@ -1,75 +1,107 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# DevBill – Frontend
 
-Currently, two official plugins are available:
+A modern personal finance management application designed to help users track income, expenses, and monitor their financial health.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+DevBill is a personal finance management application built to provide a simple and intuitive experience for organizing financial transactions and visualizing financial data.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The frontend focuses on usability, reusable components, and a clean architecture.
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- User authentication
+- Financial dashboard
+- Income and expense tracking
+- Transaction management
+- Monthly financial summaries
+- Expense visualization by category
+- Historical transaction analysis
+- Responsive user interface
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technologies
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React
+- TypeScript
+- Vite
+- React Router
+- Axios
+- Tailwind CSS / Styled Components (depending on the implementation)
+- Recharts
+- Lucide React
+- Firebase Authentication
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Getting Started
 
+### Prerequisites
+
+- Node.js
+- Yarn or npm
+- Git
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone YOUR_REPOSITORY_URL
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd devbill-frontend
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+4. Configure your environment variables.
+
+5. Start the development server:
+
+   ```bash
+   yarn dev
+   ```
+
+## Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_BASE_URL=YOUR_BACKEND_URL
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```text
+src/
+├── components/
+├── contexts/
+├── hooks/
+├── layouts/
+├── pages/
+├── routes/
+├── services/
+├── styles/
+└── utils/
 ```
+
+## Future Improvements
+
+- Improve dashboard analytics
+- Add advanced transaction filters
+- Enhance user experience
+- Expand financial reporting features
+
+## Author
+
+Developed with dedication by **Diego**.
+
+---
+
+If you find this project interesting, feel free to explore the code and follow its development.
