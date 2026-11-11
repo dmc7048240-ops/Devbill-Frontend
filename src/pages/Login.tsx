@@ -1,0 +1,59 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import GoogleLoginButton from "../components/GoogleLoginButton";
+import { useAuth } from "../context/AuthContext";
+
+const Login = () => {
+	const navigate = useNavigate();
+	const { signWithGoogle, authState } = useAuth();
+
+	const handleLogin = async () => {
+		try {
+			await signWithGoogle();
+		} catch (error) {
+			console.error("Error during Google login:", error);
+		}
+	};
+
+	useEffect(() => {
+		if (authState.user && !authState.loading) {
+			navigate("/dashboard");
+		}
+	}, [authState.user, authState.loading, navigate]);
+	return (
+		<div className="bg-gray-100 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+			<div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
+				<header>
+					<h1 className="text-center text-3xl font-extrabold text-gray-900">
+						DevBills
+					</h1>
+					<p className="text-center text-gray-600 text-sm ">
+						Gerencie suas finanças de forma simples e eficiente.
+					</p>
+				</header>
+				<main className="mt-8 bg-white py-8 px-4 shadow-md rounded-lg sm:px-10 space-y-6 flex items-center flex-col">
+					<section className="text-center mb-6">
+						<h2 className="text-xl font-medium text-gray-900">
+							Faça login para continuar
+						</h2>
+						<p className="text-gray-600 mt-1 text-sm ">
+							Acesse sua conta para começar a gerenciar suas finanças.
+						</p>
+					</section>
+					<GoogleLoginButton onClick={handleLogin} isLoading={false} />
+					(authState.error && (
+					<div className="mt-4 text-red-500 text-sm bg-red-50 text-center">
+						<p>{authState.error} Error no sistema </p>
+					</div>
+					))
+					<footer className="mt-6">
+						<p className="text-center text-gray-600 text-sm ">
+							Ao fazer login, você concorda com nossos termos de serviço.
+						</p>
+					</footer>
+				</main>
+			</div>
+		</div>
+	);
+};
+export default Login;
